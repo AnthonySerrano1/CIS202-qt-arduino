@@ -9,7 +9,8 @@ class BallAnimation : public QWidget
 public:
     explicit BallAnimation(QWidget *parent = nullptr);
     void setOrigin(const QPoint &origin);
-    void addToOrigin(const QPoint &origin);
+    void addToOrigin(const QPoint &point);
+    void ballbounce(); //new function
 
 signals:
 
@@ -18,6 +19,8 @@ public slots:
 
 private:
     QPoint m_origin;
+    int m_xpos;
+    int m_ypos;
 };
 
 #endif // BALLANIMATION_H

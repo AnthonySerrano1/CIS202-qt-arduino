@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_led_state[2] = 0;
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(readData()));
-    timer->start(100);
+    timer->start(30); //speed of ball movement
     banimate->move(200,200);
     //setFixedSize(800,600);
 }
@@ -73,7 +73,9 @@ void MainWindow::readData()
     //m_buffer = QString("%1" ).arg( QDateTime::currentDateTime().toTime_t() );
     //processMessage(m_buffer);
     banimate->addToOrigin(QPoint(1,1));
-    banimate->repaint();
+    //banimate->repaint();
+    banimate->ballbounce(); // new
+    banimate->repaint(); // new
     processMessage(QString("%1 %2").arg(count).arg(QDateTime::currentDateTime().toTime_t()));
     count++;
     m_buffer = "";
